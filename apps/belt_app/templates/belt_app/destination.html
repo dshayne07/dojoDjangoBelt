@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Destination</title>
+    <link rel="stylesheet" href="/static/belt_app/style.css">
+</head>
+<body>
+    <div class="float-right"><a href="/travels" style="margin-right:20px;">Home</a> <a href="/logout">Logout</a></div>
+
+    <h1>{{trip.destination}}</h1>
+    <p><span style="font-weight: bold">Planned by:</span> {{trip.created_by.name}}</p>
+    <p><span style="font-weight: bold">Description:</span> {{trip.plan}}</p>
+    <p><span style="font-weight: bold">Travel Date From:</span> {{trip.start_date|date:'b d, Y'}}</p>
+    <p><span style="font-weight: bold">Travel Date To:</span> {{trip.end_date|date:'b d, Y'}}</p>
+    
+    {% if other_users %}
+        <h1>Other users joining the trip</h1>
+        {% for user in other_users %}
+            <p style="margin-left:40px">{{user.name}}</p>
+        {% endfor %}
+    {% endif %}
+    
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{{name}}'s Trips</title>
+    <link rel="stylesheet" href="/static/belt_app/style.css">
+</head>
+<body>
+    <div class="float-right"><a href="/travels" style="margin-right:20px;">Home</a> <a href="/logout">Logout</a></div>
+    <h1>{{name}}'s Trips</h1>
+
+    {% for trip in trips %}
+        <h2><a href="/travels/destination/{{trip.id}}">{{trip.destination}}</a></h2>
+        <p><span style="font-weight: bold">Description:</span> {{trip.plan}}</p>
+        <p><span style="font-weight: bold">Travel Date From:</span> {{trip.start_date|date:'b d, Y'}}</p>
+        <p><span style="font-weight: bold">Travel Date To:</span> {{trip.end_date|date:'b d, Y'}}</p>
+    {% endfor %}
+    {% for trip in more_trips %}
+        <h2><a href="/travels/destination/{{trip.id}}">{{trip.destination}}</a></h2>
+        <p><span style="font-weight: bold">Planned by:</span> {{trip.created_by.name}}</p>
+        <p><span style="font-weight: bold">Description:</span> {{trip.plan}}</p>
+        <p><span style="font-weight: bold">Travel Date From:</span> {{trip.start_date|date:'b d, Y'}}</p>
+        <p><span style="font-weight: bold">Travel Date To:</span> {{trip.end_date|date:'b d, Y'}}</p>
+    {% endfor %}
+    
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Add Plan</title>
+    <link rel="stylesheet" href="/static/belt_app/style.css">
+</head>
+<body>
+    <div class="float-right"><a href="/travels" style="margin-right:20px;">Home</a> <a href="/logout">Logout</a></div>
+    {% if messages %}
+    <fieldset id="errors"><legend style="color:black;">Errors</legend>
+        {% for message in messages %}
+            <p>{{message}}</p>
+        {% endfor %}
+    </fieldset>
+    {% endif %}
+    <h1>Add Trip</h1>
+    <div style="clear:both"> </div>
+
+    <form method="POST" action="/add_trip">{% csrf_token %}
+        <label>Destination: <input type="text" name="destination" placeholder="Destination"></label><br><br>
+        <label>Description: <input type="text" name="description" placeholder="Description"></label><br><br>
+        <label>Travel Date From: <input type="date" name="start_date"></label><br><br>
+        <label>Travel Date To: <input type="date" name="end_date"></label><br><br>
+        <input type="submit" value="Add">
+    </form>
+    
+</body>
+</html>

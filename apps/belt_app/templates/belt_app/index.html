@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login/Registration</title>
+    <link rel="stylesheet" href="/static/belt_app/style.css">
+</head>
+<body>
+    <h1>Welcome!</h1>
+    {% if messages %}
+    <fieldset id="errors"><legend style="color:black;">Errors</legend>
+        {% for message in messages %}
+            <p>{{message}}</p>
+        {% endfor %}
+    </fieldset>
+    {% endif %}
+    <fieldset>
+        <legend>Register</legend>
+        <form method="POST" action="/register">{% csrf_token %}
+            <label>Name: <input type="text" name="name" placeholder="Your Name"></label><br><br>
+            <label>Username: <input type="text" name="username" placeholder="Your Username"></label><br><br>
+            <label>Password: <input type="password" name="password" placeholder="Your Password"></label><br><br>
+            <label>Confirm Password: <input type="password"  name="confirm_password" placeholder="Confirm Your Password"></label><br><br>
+            <input type="submit" value="Register">
+        </form>
+    </fieldset>
+
+    <fieldset>
+        <legend>Login</legend>
+        <form method="POST" action="/login">{% csrf_token %}
+            <label>Username: <input type="text" name="username" placeholder="Your Username"></label><br><br>
+            <label>Password: <input type="password" name="password" placeholder="Your Password"></label><br><br>
+            <input type="submit" value="Login">
+        </form>
+    </fieldset>
+    
+</body>
+</html>
